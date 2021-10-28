@@ -1,6 +1,9 @@
 class Train
-
-
+  attr_reader :name
+  attr_reader :type
+  attr_reader :speed
+  attr_reader :current_station
+  attr_reader :wagons
   def initialize(name, type, wagons)
     @name = name
     @speed = 0
@@ -13,31 +16,13 @@ class Train
     @current_num_station = 0
     @current_route_stations = []
   end
-
-  #возвращает имя позда
-  def return_name
-    @name
-  end
-
-  #возвращает тип поезда
-  def return_type
-    @type
-  end
   #набирает скорость
   def train_go(speed)
     @speed += speed
   end
-  # возвращает текущую скорость
-  def return_speed
-    @speed
-  end
   # тормозит
   def stop
     @speed = 0
-  end
-  # возвращает кол-во вагонов
-  def return_count_wagons
-    @wagons
   end
   # отцпляет вагоны(нельзя пока движется)
   def delete_wagon
@@ -58,28 +43,19 @@ class Train
   # принимает маршрут следования
   def take_route(route)
     @current_route = route
-    @current_station = @current_route.return_all_station[0]
+    @current_station = @current_route.stations[0]
   end
-
   # перемещение между станциями(по 1 за раз)
   def next_station
     @current_num_station += 1
-    @current_station = @current_route.return_all_station[@current_num_station]
-
+    @current_station = @current_route.stations[@current_num_station]
   end
-
   #возвращает предыдущую станцию
   def return_previous_station
     @current_route[@current_num_station - 1]
   end
-
-  #возвращает текущую станцию
-  def return_current_station
-    @current_station
-  end
-
+  #возвращает следущую станцию
   def return_next_station
     @current_route[@current_num_station + 1]
   end
-
 end

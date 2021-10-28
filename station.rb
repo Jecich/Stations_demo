@@ -1,4 +1,5 @@
 class Station
+  attr_reader :name
   def initialize(name)
     @name = name
     @trains = []
@@ -7,35 +8,28 @@ class Station
   def add_train(train)
     @trains << train
   end
-
-  #возвращает имя станции
-  def return_name
-    @name
-  end
   #вывод всех поездов на станции
   def all_trains
-    @trains.each do |i|
-      puts "name is: #{i.return_name}, type is: #{i.return_type}"
+    @trains.each do |train|
+      puts "name is: #{train.name}, type is: #{train.type}"
     end
   end
-
   #вывод количества грузовых или пассажирских поездов
   def number_type(type)
     number = []
-    @trains.each do |i|
+    @trains.each do |train|
       if i.return_type == type
-        number << ["name is: #{i.return_name}, type is: #{i.return_type}"]
+        number << ["name is: #{train.name}, type is: #{train.type}"]
       end
     end
     puts number
   end
   #отправить поезд
   def send_train(name)
-    @trains.each do |i|
-      if i.return_name == name
-        @trains.delete(i)
+    @trains.each do |train|
+      if train.name == name
+        @trains.delete(train)
       end
     end
   end
-
 end
