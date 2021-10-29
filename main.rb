@@ -1,16 +1,19 @@
 require_relative 'train'
 require_relative 'route'
 require_relative 'station'
+require_relative 'passenger_train'
+require_relative 'cargo_train'
+require_relative 'passenger_wagon'
+require_relative 'cargo_wagon'
 
-train1 = Train.new(42, "cargo", 4)
-puts train1.type
 msk = Station.new("msk")
-pp = Station.new("pp")
-blue = Route.new(msk, pp)
-train1.take_route(blue)
-puts train1.current_station.name
-train1.next_station
-puts train1.current_station.name
+ps_train1 = PassengerTrain.new("32")
+ps_wagon1 = PassengerWagon.new("ww")
+ps_train1.attach_wagon(ps_wagon1)
+msk.add_train(ps_train1)
+puts msk.number_type("passenger")
+
+
 
 
 

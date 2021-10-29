@@ -16,13 +16,9 @@ class Station
   end
   #вывод количества грузовых или пассажирских поездов
   def number_type(type)
-    number = []
-    @trains.each do |train|
-      if i.return_type == type
-        number << ["name is: #{train.name}, type is: #{train.type}"]
-      end
-    end
-    puts number
+    @trains.map do |train|
+      ["name is: #{train.name}, type is: #{train.type}"] if train.type == type
+    end.compact
   end
   #отправить поезд
   def send_train(name)
