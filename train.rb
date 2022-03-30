@@ -1,5 +1,5 @@
 class Train
-  attr_reader :name
+  attr_accessor :name
   attr_reader :speed
   attr_reader :current_station
   attr_reader :wagons
